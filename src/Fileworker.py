@@ -19,7 +19,7 @@ class Fileworker(ABC):
 class JSONSaver(Fileworker):
     """Класс для работы с json файлами."""
     def __init__(self):
-        self.file_name = "../data/vacancies.json"
+        self.file_name = "data/vacancies.json"
 
     def save_vacancies(self, data: list[object]):
         """Преобразует список экземпляров класса Vacancy в набор данных для json и сохраняет в json файл."""
