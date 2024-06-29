@@ -1,6 +1,6 @@
 from src.Parser import HeadHunterAPI
 from src.Vacancy import Vacancy
-from src.JSONSaver import JSONSaver
+from src.Fileworker import JSONSaver
 from src.utils import get_top_vacancies, print_vacancies
 
 

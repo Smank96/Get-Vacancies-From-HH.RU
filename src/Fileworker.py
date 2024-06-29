@@ -1,5 +1,4 @@
 import json
-import Vacancy
 from abc import ABC, abstractmethod
 
 
