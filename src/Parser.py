@@ -3,7 +3,6 @@ from abc import ABC, abstractmethod
 
 
 class Parser(ABC):
-
     @abstractmethod
     def get_vacancies(self, keyword):
         pass
@@ -18,9 +17,10 @@ class HeadHunterAPI(Parser):
         self.params = {'text': '', 'page': 0, 'per_page': 100}
         self.vacancies = []
 
-    def get_vacancies(self, keyword: str) -> list:
-        """Получает вакансии"""
+    def get_vacancies(self, keyword: str) -> list[dict]:
+        """Подключается к api hh.ru и получает вакансии по ключевому слову."""
         self.params['text'] = keyword
+
         while self.params.get('page') != 1:
             response = requests.get(self.url, headers=self.headers, params=self.params)
             vacancies = response.json()['items']

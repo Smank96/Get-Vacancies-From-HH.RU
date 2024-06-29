@@ -1,6 +1,3 @@
-import json
-
-
 class Vacancy:
     """Класс для описания вакансии."""
 
@@ -25,61 +22,69 @@ class Vacancy:
                 f"Зарплата: {self.salary} {self.currency}\n"
                 f"Требования: {self.requirement}\n")
 
-    # def __lt__(self, other):
-    #     if self.salary != 0:
-    #         salary1 = int(self.salary.split()[0])
-    #     else:
-    #         salary1 = self.salary
-    #
-    #     if other.salary != 0:
-    #         salary2 = int(other.salary.split()[0])
-    #     else:
-    #         salary2 = other.salary
-    #
-    #     if salary1 < salary2:
-    #         return True
-    #     else:
-    #         return False
+    def __lt__(self, other) -> bool:
+        """Метод для сравнения зарплаты между экземплярами класса Vacancy (знак меньше "<")."""
+        if self.salary != 0:
+            salary1 = int(self.salary.split()[0])
+        else:
+            salary1 = self.salary
 
-    # def __gt__(self, other):
-    #     if self.salary != 0:
-    #         salary1 = int(self.salary.split()[0])
-    #     else:
-    #         salary1 = self.salary
-    #
-    #     if other.salary != 0:
-    #         salary2 = int(other.salary.split()[0])
-    #     else:
-    #         salary2 = other.salary
-    #
-    #     if salary1 > salary2:
-    #         return True
-    #     else:
-    #         return False
+        if other.salary != 0:
+            salary2 = int(other.salary.split()[0])
+        else:
+            salary2 = other.salary
+
+        if salary1 < salary2:
+            return True
+        else:
+            return False
+
+    def __gt__(self, other) -> bool:
+        """Метод для сравнения зарплаты между экземплярами класса Vacancy (знак больше ">")."""
+        if self.salary != 0:
+            salary1 = int(self.salary.split()[0])
+        else:
+            salary1 = self.salary
+
+        if other.salary != 0:
+            salary2 = int(other.salary.split()[0])
+        else:
+            salary2 = other.salary
+
+        if salary1 > salary2:
+            return True
+        else:
+            return False
 
     @staticmethod
     def validate_data(data):
+        """Метод для проверки наличия данных."""
         if data:
             return data
         else:
             return "Отсутствует"
 
     @staticmethod
-    def validate_salary(vacancy):
+    def validate_salary(vacancy: dict):
+        """Метод для проверки указана зарплата ли зарплата.
+        Если да - преобразует строку в число и возвращает его.
+        Если нет - возвращает 0."""
         if vacancy.get('salary') and vacancy.get('salary').get('from'):
             return int(vacancy.get('salary').get('from'))
         return 0
 
     @staticmethod
-    def validate_currency(vacancy):
+    def validate_currency(vacancy: dict):
+        """Метод для проверки указан ли валюта для зарплаты.
+        Если да - возвращает её.
+        Если нет - возвращает пустую строку."""
         if vacancy.get('salary') and vacancy.get('salary').get('currency'):
             return vacancy.get('salary').get('currency')
         return ""
 
     @staticmethod
-    def cast_to_object_list(vacancies) -> list:
-        """Преобразование данных из JSON в список экземпляров класса Vacancy"""
-
+    def cast_to_object_list(vacancies: list) -> list[object]:
+        """Преобразование данных полученных от API HH.RU в список экземпляров класса Vacancy и возвращает его."""
         vacancies_list = []
 
         for vacancy in vacancies:
