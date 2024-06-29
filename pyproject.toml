@@ -9,6 +9,7 @@ packages = [{include = "get_vacancies_from_hh"}]
 [tool.poetry.dependencies]
 python = "^3.12"
 requests = "^2.32.3"
+pytest = "^8.2.2"
 
 
 [build-system]
