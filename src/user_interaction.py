@@ -27,14 +27,14 @@ def user_interaction():
     # Получение списка топ N вакансий.
     top_vacancies = get_top_vacancies(vacancies_list, top_n)
 
-    # filter_words = input("Введите ключевые слова для фильтрации вакансий: ").split()
-
-    # filtered_vacancies = filter_vacancies(vacancies_list, filter_words)
+    filter_words = input("Введите ключевые слова для фильтрации вакансий: ").lower().split()
+    # Фильтрация вакансий по ключевым словам.
+    filtered_vacancies = filter_vacancies(top_vacancies, filter_words)
 
     # Вывод списка вакансий на экран.
-    print_vacancies(top_vacancies)
+    print_vacancies(filtered_vacancies)
 
     # Создание экземпляра класса для работы с json файлами.
     json_saver = JSONSaver()
     # Сохранение информации о вакансиях в файл.
-    json_saver.save_vacancies(top_vacancies)
+    json_saver.save_vacancies(filtered_vacancies)

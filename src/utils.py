@@ -11,6 +11,19 @@ def print_vacancies(vacancies: list[object]):
         print(vacancy)
 
 
-def filter_vacancies(vacancies: list[object], filter_words) -> list[object]:
-    """Фильтр вакансий по заданному запросу от пользователя."""
-    pass
+def filter_vacancies(vacancies: list[object], filter_words: list[str]) -> list[object]:
+    """Фильтр вакансий по заданному запросу от пользователя.
+    Поиск ключевых слов происходит в аттрибуте requirement/"""
+    filtered_vacancies = []
+
+    for vacancy in vacancies:
+        for word in filter_words:
+            if word in vacancy.requirement:
+                filtered_vacancies.append(vacancy)
+
+    if len(filtered_vacancies) != 0:
+        return filtered_vacancies
+    else:
+        print("Не найдено совпадений по ключевым словам.")
+        # Вернёт пустой список.
+        return filtered_vacancies
