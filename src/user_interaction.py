@@ -26,7 +26,6 @@ def user_interaction():
     # Сохранение информации о вакансиях в файл
     json_saver = JSONSaver()
     json_saver.save_vacancies(top_vacancies)
-    # json_saver.delete_vacancy(vacancy)
 
     # filter_words = input("Введите ключевые слова для фильтрации вакансий: ").split()
 
