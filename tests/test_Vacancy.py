@@ -51,16 +51,16 @@ def test_str(collection):
 
 
 def test_validate_salary(collection):
-    result = Vacancy.validate_salary(collection[0])
-    empty_result = Vacancy.validate_salary(collection[3])
+    result = Vacancy._validate_salary(collection[0])
+    empty_result = Vacancy._validate_salary(collection[3])
 
     assert result == 80000
     assert empty_result == 0
 
 
 def test_validate_currency(collection):
-    result = Vacancy.validate_currency(collection[0])
-    empty_result = Vacancy.validate_currency(collection[3])
+    result = Vacancy._validate_currency(collection[0])
+    empty_result = Vacancy._validate_currency(collection[3])
 
     assert result == "RUB"
     assert empty_result == ""

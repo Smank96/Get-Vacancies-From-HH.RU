@@ -45,7 +45,7 @@ class Vacancy:
             return "Отсутствует"
 
     @staticmethod
-    def __validate_salary(vacancy: dict):
+    def _validate_salary(vacancy: dict):
         """Метод для проверки указана зарплата ли зарплата.
         Если да - преобразует строку в число и возвращает его.
         Если нет - возвращает 0."""
@@ -54,7 +54,7 @@ class Vacancy:
         return 0
 
     @staticmethod
-    def __validate_currency(vacancy: dict):
+    def _validate_currency(vacancy: dict):
         """Метод для проверки указан ли валюта для зарплаты.
         Если да - возвращает её.
         Если нет - возвращает пустую строку."""
