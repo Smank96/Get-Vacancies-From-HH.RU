@@ -8,12 +8,12 @@ class Vacancy:
                  salary: int,
                  currency: str,
                  requirement: str):
-        self.vacancy_name = self.validate_data(vacancy_name)
-        self.city = self.validate_data(city)
-        self.url = self.validate_data(url)
+        self.vacancy_name = self.__validate_data(vacancy_name)
+        self.city = self.__validate_data(city)
+        self.url = self.__validate_data(url)
         self.salary = salary
         self.currency = currency
-        self.requirement = self.validate_data(requirement)
+        self.requirement = self.__validate_data(requirement)
 
     def __str__(self):
         return (f"Название вакансии: {self.vacancy_name}\n"
@@ -37,7 +37,7 @@ class Vacancy:
             return False
 
     @staticmethod
-    def validate_data(data):
+    def __validate_data(data):
         """Метод для проверки наличия данных."""
         if data:
             return data
@@ -45,7 +45,7 @@ class Vacancy:
             return "Отсутствует"
 
     @staticmethod
-    def validate_salary(vacancy: dict):
+    def _validate_salary(vacancy: dict):
         """Метод для проверки указана зарплата ли зарплата.
         Если да - преобразует строку в число и возвращает его.
         Если нет - возвращает 0."""
@@ -54,7 +54,7 @@ class Vacancy:
         return 0
 
     @staticmethod
-    def validate_currency(vacancy: dict):
+    def _validate_currency(vacancy: dict):
         """Метод для проверки указан ли валюта для зарплаты.
         Если да - возвращает её.
         Если нет - возвращает пустую строку."""
@@ -71,8 +71,8 @@ class Vacancy:
             vacancies_list.append(Vacancy(vacancy_name=vacancy.get('name'),
                                           city=vacancy.get('area').get('name'),
                                           url=vacancy.get('alternate_url'),
-                                          salary=Vacancy.validate_salary(vacancy),
-                                          currency=Vacancy.validate_currency(vacancy),
+                                          salary=Vacancy._validate_salary(vacancy),
+                                          currency=Vacancy._validate_currency(vacancy),
                                           requirement=vacancy.get('snippet').get('requirement')))
 
         return vacancies_list
