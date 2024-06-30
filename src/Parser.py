@@ -21,7 +21,7 @@ class HeadHunterAPI(Parser):
         """Подключается к api hh.ru и получает вакансии по ключевому слову."""
         self.params['text'] = keyword
 
-        while self.params.get('page') != 1:
+        while self.params.get('page') != 10:
             response = requests.get(self.url, headers=self.headers, params=self.params)
             vacancies = response.json()['items']
             self.vacancies.extend(vacancies)

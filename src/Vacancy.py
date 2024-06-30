@@ -7,7 +7,7 @@ class Vacancy:
                  url: str,
                  salary: int,
                  currency: str,
-                 requirement: dict):
+                 requirement: str):
         self.vacancy_name = self.validate_data(vacancy_name)
         self.city = self.validate_data(city)
         self.url = self.validate_data(url)
@@ -24,34 +24,14 @@ class Vacancy:
 
     def __lt__(self, other) -> bool:
         """Метод для сравнения зарплаты между экземплярами класса Vacancy (знак меньше "<")."""
-        if self.salary != 0:
-            salary1 = int(self.salary.split()[0])
-        else:
-            salary1 = self.salary
-
-        if other.salary != 0:
-            salary2 = int(other.salary.split()[0])
-        else:
-            salary2 = other.salary
-
-        if salary1 < salary2:
+        if self.salary < other.salary:
             return True
         else:
             return False
 
     def __gt__(self, other) -> bool:
         """Метод для сравнения зарплаты между экземплярами класса Vacancy (знак больше ">")."""
-        if self.salary != 0:
-            salary1 = int(self.salary.split()[0])
-        else:
-            salary1 = self.salary
-
-        if other.salary != 0:
-            salary2 = int(other.salary.split()[0])
-        else:
-            salary2 = other.salary
-
-        if salary1 > salary2:
+        if self.salary > other.salary:
             return True
         else:
             return False
