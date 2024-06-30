@@ -37,4 +37,4 @@ def user_interaction():
     # Создание экземпляра класса для работы с json файлами.
     json_saver = JSONSaver()
     # Сохранение информации о вакансиях в файл.
-    json_saver.save_vacancies(filtered_vacancies)
+    json_saver.add_vacancies_to_json(filtered_vacancies)
