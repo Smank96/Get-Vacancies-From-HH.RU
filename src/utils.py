@@ -16,6 +16,10 @@ def filter_vacancies(vacancies: list[object], filter_words: list[str]) -> list[o
     Поиск ключевых слов происходит в аттрибуте requirement/"""
     filtered_vacancies = []
 
+    # если ключевые слова не заданны, то возвращается исходный список вакансий.
+    if len(filter_words) == 0:
+        return vacancies
+
     for vacancy in vacancies:
         for word in filter_words:
             if word in vacancy.requirement:
