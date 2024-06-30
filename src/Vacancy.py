@@ -71,8 +71,8 @@ class Vacancy:
             vacancies_list.append(Vacancy(vacancy_name=vacancy.get('name'),
                                           city=vacancy.get('area').get('name'),
                                           url=vacancy.get('alternate_url'),
-                                          salary=Vacancy.__validate_salary(vacancy),
-                                          currency=Vacancy.__validate_currency(vacancy),
+                                          salary=Vacancy._validate_salary(vacancy),
+                                          currency=Vacancy._validate_currency(vacancy),
                                           requirement=vacancy.get('snippet').get('requirement')))
 
         return vacancies_list
