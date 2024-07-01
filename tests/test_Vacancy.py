@@ -51,19 +51,17 @@ def test_str(collection):
 
 
 def test_validate_salary(collection):
-    result = Vacancy._validate_salary(collection[0])
-    empty_result = Vacancy._validate_salary(collection[3])
+    result = Vacancy.cast_to_object_list(collection)
 
-    assert result == 80000
-    assert empty_result == 0
+    assert result[0].salary == 80000
+    assert result[3].salary == 0
 
 
 def test_validate_currency(collection):
-    result = Vacancy._validate_currency(collection[0])
-    empty_result = Vacancy._validate_currency(collection[3])
+    result = Vacancy.cast_to_object_list(collection)
 
-    assert result == "RUB"
-    assert empty_result == ""
+    assert result[0].currency == "RUB"
+    assert result[3].currency == ""
 
 
 def test_lt(collection):

@@ -21,6 +21,10 @@ class JSONSaver(Fileworker):
     def __init__(self):
         self.__file_name = "data/vacancies.json"
 
+    def set_filename(self, new_filename):
+        """Сеттер названия json файла."""
+        self.__file_name = new_filename
+
     def add_vacancies_to_json(self, vacancies: list[object]):
         """Преобразует список экземпляров класса Vacancy в набор данных для json и сохраняет в json файл."""
         # Открываем файл на чтение, сохраняем все данные в переменную.
