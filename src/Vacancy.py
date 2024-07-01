@@ -45,7 +45,7 @@ class Vacancy:
             return "Отсутствует"
 
     @staticmethod
-    def _validate_salary(vacancy: dict):
+    def __validate_salary(vacancy: dict):
         """Метод для проверки указана зарплата ли зарплата.
         Если да - преобразует строку в число и возвращает его.
         Если нет - возвращает 0."""
@@ -54,7 +54,7 @@ class Vacancy:
         return 0
 
     @staticmethod
-    def _validate_currency(vacancy: dict):
+    def __validate_currency(vacancy: dict):
         """Метод для проверки указан ли валюта для зарплаты.
         Если да - возвращает её.
         Если нет - возвращает пустую строку."""
@@ -71,8 +71,8 @@ class Vacancy:
             vacancies_list.append(Vacancy(vacancy_name=vacancy.get('name'),
                                           city=vacancy.get('area').get('name'),
                                           url=vacancy.get('alternate_url'),
-                                          salary=Vacancy._validate_salary(vacancy),
-                                          currency=Vacancy._validate_currency(vacancy),
+                                          salary=Vacancy.__validate_salary(vacancy),
+                                          currency=Vacancy.__validate_currency(vacancy),
                                           requirement=vacancy.get('snippet').get('requirement')))
 
         return vacancies_list

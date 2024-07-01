@@ -1,13 +1,11 @@
-import os
 import pytest
-import json
 from src.Fileworker import JSONSaver
 from src.Vacancy import Vacancy
 
 
-def test_save_vacancies():
+def test_add_vacancies_to_json():
     saver = JSONSaver()
-    saver.file_name = "test_vacancies.json"
+    saver.set_filename("test_vacancies.json")
 
     vacancies = [
         Vacancy("Python Developer", "Moscow", "https://hh.ru/vacancy/1", 100000, "RUR", "Python, Django"),
@@ -15,11 +13,9 @@ def test_save_vacancies():
         Vacancy("JavaScript Developer", "Moscow", "https://hh.ru/vacancy/3", 110000, "RUR", "JavaScript, React")
     ]
 
-    saver.save_vacancies(vacancies)
+    saver.add_vacancies_to_json(vacancies)
 
-    with open(saver.file_name, "r", encoding="utf-8") as file:
-        saved_data = json.load(file)
-
+    saved_data = saver.read_file()
     assert len(saved_data) == 3
 
     assert saved_data[0]["vacancy_name"] == "Python Developer"
@@ -43,4 +39,4 @@ def test_save_vacancies():
     assert saved_data[2]["currency"] == "RUR"
     assert saved_data[2]["requirement"] == "JavaScript, React"
 
-    os.remove(saver.file_name)
+    saver.delete_vacancies()
